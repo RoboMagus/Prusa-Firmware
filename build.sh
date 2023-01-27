@@ -37,12 +37,12 @@ if [ ! -f "$SCRIPT_PATH/Firmware/Configuration_prusa.h" ]; then
     cp $SCRIPT_PATH/Firmware/variants/1_75mm_MK3-EINSy10a-E3Dv6full.h $SCRIPT_PATH/Firmware/Configuration_prusa.h || exit 8
 fi
 
-if [[ ! -z $LANGUAGES && $LANGUAGES == "EN_FARM" ]]; then
-    echo "English only language firmware will be built"
-    sed -i -- "s/^#define LANG_MODE *1/#define LANG_MODE              0/g" $SCRIPT_PATH/Firmware/config.h
-else
-    sed -i -- "s/^#define LANG_MODE *0/#define LANG_MODE              1/g" $SCRIPT_PATH/Firmware/config.h
-fi
+# if [[ ! -z $LANGUAGES && $LANGUAGES == "EN_FARM" ]]; then
+#     echo "English only language firmware will be built"
+#     sed -i -- "s/^#define LANG_MODE *1/#define LANG_MODE              0/g" $SCRIPT_PATH/Firmware/config.h
+# else
+#     sed -i -- "s/^#define LANG_MODE *0/#define LANG_MODE              1/g" $SCRIPT_PATH/Firmware/config.h
+# fi
 
 $BUILD_ENV_PATH/arduino $SCRIPT_PATH/Firmware/Firmware.ino --verify --board PrusaResearch:avr:prusa_einsy_rambo --pref build.path=$BUILD_PATH --pref compiler.warning_level=all || exit 9
 
@@ -54,5 +54,5 @@ if [ -z $LANGUAGES ]; then
     ./fw-build.sh || exit 10
 fi
 
-#Reset lang_mode
-sed -i -- "s/^#define LANG_MODE *0/#define LANG_MODE              1/g" $SCRIPT_PATH/Firmware/config.h
+# #Reset lang_mode
+# sed -i -- "s/^#define LANG_MODE *0/#define LANG_MODE              1/g" $SCRIPT_PATH/Firmware/config.h

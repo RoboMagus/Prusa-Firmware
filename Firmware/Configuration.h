@@ -17,7 +17,7 @@ extern const char _sPrinterMmuName[] PROGMEM;
 #define FW_MAJOR 3
 #define FW_MINOR 13
 #define FW_REVISION 0
-#define FW_FLAVOR ALPHA      //uncomment if DEBUG, DEVEL, ALPHA, BETA or RC
+#define FW_FLAVOR DEVEL      //uncomment if DEBUG, DEVEL, ALPHA, BETA or RC
 #define FW_FLAVERSION 1     //uncomment if FW_FLAVOR is defined and versioning is needed. Limited to max 8.
 #ifndef FW_FLAVOR
     #define FW_VERSION STR(FW_MAJOR) "." STR(FW_MINOR) "." STR(FW_REVISION)
@@ -92,7 +92,8 @@ extern const char _sPrinterMmuName[] PROGMEM;
 #define SERIAL_PORT 0
 
 // This determines the communication speed of the printer
-#define BAUDRATE 115200
+// #define BAUDRATE 115200
+#define BAUDRATE 250000
 
 // This enables the serial port associated to the Bluetooth interface
 //#define BTENABLED              // Enable BT interface on AT90USB devices
@@ -430,7 +431,8 @@ your extruder heater takes 2 minutes to hit the target on heating.
 #define DEFAULT_XJERK                10       // (mm/sec)
 #define DEFAULT_YJERK                10       // (mm/sec)
 #define DEFAULT_ZJERK                 0.4     // (mm/sec)
-#define DEFAULT_EJERK                 4.5     // (mm/sec)
+//#define DEFAULT_EJERK               4.5     // (mm/sec)
+#define DEFAULT_EJERK                 3.5     // (mm/sec)
 
 //===========================================================================
 //=============================Additional Features===========================

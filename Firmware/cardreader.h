@@ -5,7 +5,8 @@
 
 #ifdef SDSUPPORT
 
-#define MAX_DIR_DEPTH 6
+//R #define MAX_DIR_DEPTH 6
+#define MAX_DIR_DEPTH 3
 
 #include "SdFile.h"
 class CardReader

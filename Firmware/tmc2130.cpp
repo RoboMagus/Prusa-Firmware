@@ -38,7 +38,7 @@ uint8_t tmc2130_mres[4] = {0, 0, 0, 0}; //will be filed at begin of init
 
 
 uint8_t tmc2130_sg_thr[4] = {TMC2130_SG_THRS_X, TMC2130_SG_THRS_Y, TMC2130_SG_THRS_Z, TMC2130_SG_THRS_E};
-uint8_t tmc2130_sg_thr_home[4] = TMC2130_SG_THRS_HOME;
+//R uint8_t tmc2130_sg_thr_home[4] = TMC2130_SG_THRS_HOME;
 
 
 uint8_t tmc2130_sg_homing_axes_mask = 0x00;
@@ -277,7 +277,8 @@ void tmc2130_home_enter(uint8_t axes_mask)
 			tmc2130_sg_homing_axes_mask |= mask;
 			//Configuration to spreadCycle
 			tmc2130_wr(axis, TMC2130_REG_GCONF, TMC2130_GCONF_NORMAL);
-			tmc2130_wr(axis, TMC2130_REG_COOLCONF, (((uint32_t)tmc2130_sg_thr_home[axis]) << 16));
+//R			tmc2130_wr(axis, TMC2130_REG_COOLCONF, (((uint32_t)tmc2130_sg_thr_home[axis]) << 16));
+			tmc2130_wr(axis, TMC2130_REG_COOLCONF, (((uint32_t)tmc2130_sg_thr[axis]) << 16));
 			tmc2130_wr(axis, TMC2130_REG_TCOOLTHRS, __tcoolthrs(axis));
 			tmc2130_setup_chopper(axis, tmc2130_mres[axis], tmc2130_current_h[axis], tmc2130_current_r_home[axis]);
 			if (mask & (X_AXIS_MASK | Y_AXIS_MASK | Z_AXIS_MASK))

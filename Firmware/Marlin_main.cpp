@@ -7242,7 +7242,8 @@ Sigma_Exit:
               break;
           }
       }
-      Sound_MakeCustom(beepP, beepS, false);
+// R Sound_MakeCustom(beepP, beepS, false);
+      Sound_MakeCustom(beepP, beepS, true); // Make G-Code beeps critical to override 'Silent' settings
     }
     break;
     #endif // M300
